@@ -7,6 +7,7 @@
       this.onClickClose = this.onClickClose.bind(this);
       this.onClickDone = this.onClickDone.bind(this);
     }
+    
     onClickClose() {
       var index = parseInt(this.props.index);
       this.props.removeItem(index);
