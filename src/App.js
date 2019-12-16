@@ -3,14 +3,21 @@ import logo from "./logo.svg";
 import "./App.css";
 import TodoHeader from "./TodoHeader";
 import TodoList from "./TodoList";
+import TodoForm from './TodoForm'
 
+var todoItems = [];
+// todoItems.push({index: 1, value: "learn react", done: false});
+// todoItems.push({index: 2, value: "Go shopping", done: true});
+// todoItems.push({index: 3, value: "buy flowers", done: true});
 class TodoApp extends React.Component {
+
   constructor (props) {
     super(props);
+
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.markTodoDone = this.markTodoDone.bind(this);
-    this.state = {todoItems: todoItems};
+    this.state = {todoItems:todoItems };
   }
   addItem(todoItem) {
     todoItems.unshift({
@@ -44,4 +51,4 @@ class TodoApp extends React.Component {
 
 
 
-export default App;
+export default TodoApp;
