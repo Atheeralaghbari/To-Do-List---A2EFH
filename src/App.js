@@ -5,38 +5,32 @@ import TodoHeader from "./TodoHeader";
 import TodoList from "./TodoList";
 import TodoForm from './TodoForm'
 
-var todoItems = [];
-// todoItems.push({index: 1, value: "learn react", done: false});
-// todoItems.push({index: 2, value: "Go shopping", done: true});
-// todoItems.push({index: 3, value: "buy flowers", done: true});
-class TodoApp extends React.Component {
-
-  constructor (props) {
-    super(props);
-
-    this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.markTodoDone = this.markTodoDone.bind(this);
+
     this.state = {todoItems:todoItems };
+    this.state = {initItems: this.props.initItems};
+
   }
   addItem(todoItem) {
-    todoItems.unshift({
-      index: todoItems.length+1, 
+    this.props.initItems.unshift({
+      index: this.props.initItems.length+1, 
       value: todoItem.newItemValue, 
       done: false
+      
     });
-    this.setState({todoItems: todoItems});
+    this.setState({initItems: this.props.initItems});
   }
   removeItem (itemIndex) {
-    todoItems.splice(itemIndex, 1);
-    this.setState({todoItems: todoItems});
+    this.props.initItems.splice(itemIndex, 1);
+    this.setState({initItems: this.props.initItems});
   }
   markTodoDone(itemIndex) {
-    var todo = todoItems[itemIndex];
-    todoItems.splice(itemIndex, 1);
+    var todo = this.props.initItems[itemIndex];
+    this.props.initItems.splice(itemIndex, 1);
     todo.done = !todo.done;
-    todo.done ? todoItems.push(todo) : todoItems.unshift(todo);
-    this.setState({todoItems: todoItems});  
+    todo.done ? this.props.initItems.push(todo) : this.props.initItems.unshift(todo);
+    this.setState({initItems: this.props.initItems});  
   }
   render() {
     return (

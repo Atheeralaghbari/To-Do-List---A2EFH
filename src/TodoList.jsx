@@ -1,6 +1,9 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 class TodoList extends React.Component {
+  constructor(){
+    super()
+  }
   render() {
     var items = this.props.items.map((item, index) => {
       return (
